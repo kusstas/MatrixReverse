@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     size_t w, h;
     std::cout << "Enter size of submatrix (w, h): ";
     std::cin >> w >> h;
-    assert(i0 + h <= m && j0 + w <= n);
+    assert(i0 + h <= m && j0 + w <= n && h > 0 && w > 0);
 
     size_t sizeSubmatrix = w * h;
     size_t lastIndexSubMatrix = sizeSubmatrix - 1;
@@ -53,14 +53,12 @@ int main(int argc, char *argv[])
     }
 
     // print matrix
-    for (size_t i = 0; i < s; i++) {
-        std::cout << std::setw(4) << matrix[i];
-        if (i % n == n - 1) {
-            std::cout << std::endl;
+    for (size_t i = 0; i < m; i++) {
+        for (size_t j = 0; j < n; j++) {
+            std::cout << std::setw(4) << matrix[toLineIndex(i, j, n)];
         }
+        std::cout << std::endl;
     }
-
-    std::cout << std::endl;
 
     return a.exec();
 }
