@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
     assert(i0 < m && j0 < n);
 
     size_t w, h;
-    std::cout << "Enter size of submatrix (w, h): ";
-    std::cin >> w >> h;
+    std::cout << "Enter size of submatrix (h, w): ";
+    std::cin >> h >> w;
     assert(i0 + h <= m && j0 + w <= n && h > 0 && w > 0);
 
     size_t sizeSubmatrix = w * h;
@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
     for (size_t i = 0; i < nSwaps; i++) {
         auto const& local1 = toMatrixIndex(i, w);
         auto const& local2 = toMatrixIndex(lastIndexSubMatrix - i, w);
+
         size_t i1 = toLineIndex(i0 + local1.first, j0 + local1.second, n);
         size_t i2 = toLineIndex(i0 + local2.first, j0 + local2.second, n);
-
         std::swap(matrix[i1], matrix[i2]);
     }
 
